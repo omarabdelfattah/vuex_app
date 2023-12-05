@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>This is homepage</h1>
+    <h1>Your name is {{ $store.getters.getNameWithTitle }}</h1>
+    <h1>Your age is {{ $store.state.age }}</h1>
+    <button @click="changeTitle">change title</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "HomeView",
-  components: {
-    HelloWorld,
+  components: {},
+  mounted() {
+    console.log("HomeView mounted");
+    console.log(this.$store);
+  },
+  methods: {
+    changeTitle() {
+      this.$store.commit("changeTitle");
+    },
   },
 };
 </script>
